@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  ftp-server:
+    image: bogem/ftp
+    container_name: chunkstore_ftp
+    ports:
+      - "20:20"
+      - "21:21"
+      - "47400-47470:47400-47470"
+    volumes:
+      - ./storage:/home/vsftpd/
+    environment:
+      FTP_USER: admin
+      FTP_PASS: admin
+      PASV_ADDRESS: 127.0.0.1
+  http-server:
+    image: httpd:2.4
+    container_name: chunkstore_http
+    ports:
+      - "8081:80"
+    volumes:
+      - ./storage:/usr/local/apache2/htdocs
+  

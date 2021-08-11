@@ -1,0 +1,21 @@
+diff --git a/hawkbit-runtime/docker/docker-compose.yml b/hawkbit-runtime/docker/docker-compose.yml
+index d698e82f5db9c75e7907be20cac10f54f23a19a3..a5ea48badf0143747f8160fb02e363b096cd4191 100644
+--- a/hawkbit-runtime/docker/docker-compose.yml
++++ b/hawkbit-runtime/docker/docker-compose.yml
+@@ -15,8 +15,6 @@ services:
+   # ---------------------
+   rabbitmq:
+     image: "rabbitmq:3-management"
+-    environment:
+-      RABBITMQ_DEFAULT_VHOST: "/"
+     restart: always
+     ports:
+       - "15672:15672"
+@@ -31,7 +29,6 @@ services:
+     image: "mysql:5.7"
+     environment:
+       MYSQL_DATABASE: "hawkbit"
+-      MYSQL_USER: "root"
+       MYSQL_ALLOW_EMPTY_PASSWORD: "true"
+     restart: always
+     ports:
