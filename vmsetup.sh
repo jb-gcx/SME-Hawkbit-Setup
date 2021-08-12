@@ -7,6 +7,9 @@ setup_dir="$(pwd)"
 popd
 
 target="$1"
+pushd "$target"
+target="$(pwd)"
+popd
 
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
