@@ -21,8 +21,6 @@ sudo apt install docker.io docker-compose
 sudo groupadd docker || true
 sudo usermod -aG docker ${USER}
 
-bash
-
 pushd "$target"
 
 # setup hawkbit
@@ -32,14 +30,13 @@ pushd hawkbit
 git checkout 2574581b2c0b1e19cc8d127409229d306616049c
 git apply "$setup_dir/compose-fixup.patch"
 
-pushd hawkbit-runtime/docker
-docker-compose up -d
-
-popd
 popd
 
 # setup chunkstore
 cp -r "$setup_dir/chunkstore" "$target/chunkstore"
-pushd "$target/chunkstore"
-docker-compose up -d
-popd
+
+echo "Setup finished"
+echo "Pleaser re-login and do the following:"
+echo "  cd $target/hawkbit/hawkbit-runtime/docker && docker-compose up -d"
+echo "  cd $target/chunkstore && docker-compose up -d"
+echo "To start the services"
