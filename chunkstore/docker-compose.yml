@@ -4,6 +4,7 @@ services:
   ftp-server:
     image: bogem/ftp
     container_name: chunkstore_ftp
+    restart: always
     ports:
       - "20:20"
       - "21:21"
@@ -17,6 +18,7 @@ services:
   http-server:
     image: httpd:2.4
     container_name: chunkstore_http
+    restart: always
     ports:
       - "8081:80"
     volumes:
